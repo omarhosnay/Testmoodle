@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'js/tailwind' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+
+
+</head>
+<body >
+    <nav class="fixed bg-white py-4 flex justify-between px-3 w-[100%]" style="top: 0;">
+        <div>
+            <img src="./src/media/self.jpg" style="width:20px;border-radius: 100vmax; " alt="">
+        </div>
+
+        <div>Mount Orange School</div>
+    </nav>
+
+    <section class="flex flex-col mt-[100px]">
+
+        <div class="flex justify-between px-4"> 
+            <div><i class="fa-solid fa-cloud-arrow-down" style="color: #5e5c64;"></i></div>
+
+            <div>مقرراتي الدراسية</div>
+
+        </div>
+
+
+        <form action="" method="post" class=" flex flex-col px-3 my-3">
+            {% csrf_token %}
+            <div class="border flex  px-4 gap-5 border-black">
+                <div>
+                    <i class="fa-solid    fa-magnifying-glass" style="color: #5e5c64;"></i>
+                </div>
+            <input type="text" class=" w-[320px] focus:border-0 focus:outline-none" > 
+        </div>
+        </form>
+
+
+ 
+
+{% comment %}  {% endcomment %}
+{% for course in data %}
+        <div class=" border px-2 mx-3 my-5 rounded-xl">
+            <div class="flex justify-between px-3"> 
+                <div>    <i class="fa-regular fa-star"></i> </div> 
+                <div>{{course.name}} </div>
+
+                
+    </div>
+
+    
+    <div class="flex justify-between">
+        <div class="px-2">
+            {% for cat in course.categories %}
+            <span class="bg-orange-300 px-2 py-1 rounded-xl">{{cat}}</span>
+                {% endfor %}
+
+        </div>
+
+        <div class="p-4 m-2"> <img src="./src/media/self.jpg" style="width:20px;" alt=""></div>
+    </div>
+        </div>
+        {% endfor %}
+{% comment %}  {% endcomment %}
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <nav class="fixed border bg-white border-black py-4 flex justify-between px-3 w-[100%]" style="bottom: 0;"> 
+        
+        <div>Media</div>
+        <div>Phone</div>
+        <div>Home</div>
+        <div>Courses</div>
+    </nav>
+</body>
+</html>
